@@ -1,0 +1,67 @@
+@import "normalize.scss";
+@import "_helpers";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 75%;
+  font-family: 'Kumbh Sans', sans-serif;
+}
+
+body {
+  background: linear-gradient(hsl(273, 75%, 66%), hsl(240, 73%, 65%));
+  max-width: 1440px;
+  height: 100%;
+  //   display: flex;
+  //   flex-direction: column;
+  padding: 1em;
+}
+.faq-info {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.accordion-container {
+  width: 327px;
+  height: auto;
+  border: 1px solid #000;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // position: relative;
+}
+
+.accordion-header {
+  position: relative;
+  top: -30;
+  max-width: 100%;
+}
+
+.faq-info {
+  padding: 1em;
+}
+
+// https://www.freecodecamp.org/news/build-an-accordion-menu-using-html-css-and-javascript/
+
+@media screen and (min-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: row;
+  }
+  .accordion-container {
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .faq-info {
+    display: flex;
+    flex-direction: row;
+    // flex-wrap: wrap;
+  }
+}
