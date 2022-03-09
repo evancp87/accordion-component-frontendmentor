@@ -1,5 +1,8 @@
 @import "normalize.scss";
-@import "_helpers";
+@import "helpers.scss";
+@import "./abstracts/colors";
+
+$desaturated-blue: hsl(238, 29%, 16%);
 
 * {
   box-sizing: border-box;
@@ -9,59 +12,264 @@
 
 html {
   font-size: 75%;
-  font-family: 'Kumbh Sans', sans-serif;
+  font-family: "Kumbh Sans", sans-serif;
+  height: 100vh;
 }
 
 body {
-  background: linear-gradient(hsl(273, 75%, 66%), hsl(240, 73%, 65%));
+  background: $background-gradient;
+  background-attachment: fixed;
   max-width: 1440px;
-  height: 100%;
-  //   display: flex;
-  //   flex-direction: column;
-  padding: 1em;
-}
-.faq-info {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 100vh;
+
 }
+
+main {
+  display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+
+
+.faq-title {
+  color: $text-primary-blue;
+  display: flex;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  justify-content: center;
+}
+
+
 .accordion-container {
   width: 327px;
   height: auto;
-  border: 1px solid #000;
   border-radius: 20px;
+  background: white;
   display: flex;
+  margin-top: 2em;
   flex-direction: column;
   justify-content: center;
-  // position: relative;
+  background: {
+
+    image: url(../images/bg-pattern-mobile.svg);
+    repeat: no-repeat;
+    size: 100%;
+    position: 50% 25%;
+  }
 }
 
 .accordion-header {
   position: relative;
-  top: -30;
+  top: -55px;
   max-width: 100%;
 }
 
-.faq-info {
-  padding: 1em;
+.box {
+  display: none;
+
 }
 
-// https://www.freecodecamp.org/news/build-an-accordion-menu-using-html-css-and-javascript/
+.patterns {
+  display: none;
+}
 
-@media screen and (min-width: 768px) {
-  body {
-    display: flex;
-    flex-direction: row;
+
+.accordion-item {
+  position: relative;
+  border-bottom: 1px solid hsl(240, 5%, 91%);
+  margin-top: 1.5em;
+
+}
+
+.item-heading {
+  margin-bottom: 1em;
+  font-weight: 400;
+  font-size: 12px;
+  color: $text-neutral-gray-blue;
+    &:hover {
+      cursor: pointer;
+      color: $text-primary-red;
+    }
+   
+  + .down-arrow {
+    position: absolute;
+    margin-top: 0.3em;
+    top: 0;
+    right: 0;
+    transition: 0.5s;
+    animation: flip-arrow 0.5s ;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
+}
+
+
+
+.accordion-item .content {
+  position: relative;
+  overflow: hidden;
+  font-weight: 400;
+  height: 0;
+  // text-align: justify;
+  transition: 0.5s;
+  color: $text-neutral-dark-grey-blue;
+margin-bottom: 2em;
+}
+
+.faq-info {
+  padding: 0 1em;
+  margin: 1em;
+}
+
+.faq-info .accordion-item.active .content {
+  height: 30px;
+  overflow: visible;
+  transition: 0.8s;
+animation: fade-in ease-in 0.8s; 
+
+
+
+}
+
+.accordion-item.active .item-heading {
+color: $text-primary-blue;
+font-weight: 700;
+
+
+}
+
+@keyframes fade-in {
+  0% {
+opacity: 0;
+  }
+
+  60% {
+    opacity: 0.5;
+
+  }
+  90% {
+    opacity: 0.8;
+
+  }
+  100% {
+    opacity: 1;
+
+  }
+}
+.accordion-item.active .down-arrow {
+
+    transform: rotate(180deg);
+  
+}
+
+
+
+@media screen and (min-width: 1100px) {
+
   .accordion-container {
-    width: 500px;
     display: flex;
+    max-width: 920px;
+    width: 920px;
     flex-direction: row;
+    overflow: hidden;
+    justify-content: space-between;
+    background: {
+
+      image: url(../images/bg-pattern-desktop.svg);
+      repeat: no-repeat;
+      size: 100%;
+      position: -540px -175px;
+
+    }
+  }
+
+  .accordion-header {
+    position: relative;
+    flex: 1 50%;
+    top: 130px;
+    left: -80px;
+  }
+
+  .box {
+    display: block;
+    // left: 25px;
+    // top: 170px;
+    position: absolute;
+  }
+  
+  .patterns {
+    display: block;
+    position: absolute;
+    left: -500px;
+    top: -350px;
+  }
+
+  .faq-title {
+    display: block;
+    margin-left: 0.3em;
   }
 
   .faq-info {
     display: flex;
-    flex-direction: row;
-    // flex-wrap: wrap;
+    padding: 1em;
+    margin: 5em 3em 3em 0;
+
+    justify-content: center;
+    flex-direction: column;
   }
+
+  .accordion-item {
+    margin: 1em;
+  }
+
+  .illustration-container {
+    // position: relative;
+    // height: 300px;
+    // top: -63%;
+    // position: fixed;
+    /* height: 300px; */
+    // top: 566px;
+    // left: 129px;
+    position: relative;
+    
+    top: -195px;
+    left: 30px;
+   
+  }
+}
+
+
+
+
+@media screen and (max-width: 350px) {
+  .accordion-container {
+flex-wrap: wrap;
+width: 200px;
+background-position: 50% 0%;
+
+  }
+
+.faq-title {  
+  font-size: 1rem;
+  margin-top: 5.5em;
+}
+
+
+.accordion-header {
+  top: -100px;
+}
+}
+
+
+@media screen and (max-height: 800px) {
+
+  .accordion-container {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+      }
 }
