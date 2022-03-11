@@ -384,12 +384,12 @@ main {
   background-image: url(../images/bg-pattern-mobile.svg);
   background-repeat: no-repeat;
   background-size: 100%;
-  background-position: 50% 25%;
+  background-position: 50% 15%;
 }
 
 .accordion-header {
   position: relative;
-  top: -55px;
+  top: -70px;
   max-width: 100%;
 }
 
@@ -546,11 +546,18 @@ main {
   .accordion-header {
     top: -100px;
   }
+
+  .faq-info .accordion-item.active .content {
+    margin-bottom: 5em;
+  }
+
+  .item-heading + .down-arrow {
+    right: -10px;
+  }
 }
-@media screen and (max-height: 800px) {
-  .accordion-container {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+@media screen and (max-height: 750px) {
+  body {
+    margin-top: 4em;
   }
 }
 
