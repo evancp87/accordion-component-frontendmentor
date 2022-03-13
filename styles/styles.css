@@ -497,6 +497,8 @@ main {
 
   .box {
     display: block;
+    left: -1010px;
+    top: 10px;
     position: absolute;
   }
 
@@ -527,8 +529,6 @@ main {
   .illustration-container {
     /* height: 300px; */
     position: relative;
-    top: -195px;
-    left: 30px;
   }
 }
 @media screen and (max-width: 350px) {
